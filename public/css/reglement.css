@@ -1,0 +1,65 @@
+.reglement-hero {
+    height: 50vh;
+    background: linear-gradient(rgba(35, 39, 42, 0.9), rgba(35, 39, 42, 0.9)),
+                url('/api/placeholder/1920/1080');
+    background-size: cover;
+    background-position: center;
+}
+
+.reglement-content {
+    padding: 50px 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.reglement-section {
+    background-color: var(--secondary-color);
+    border-radius: 10px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.reglement-section h2 {
+    color: var(--primary-color);
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.reglement-section h2 i {
+    margin-right: 10px;
+}
+
+.reglement-section ul {
+    list-style-type: none;
+}
+
+.reglement-section ul li {
+    margin-bottom: 15px;
+    padding-left: 20px;
+    position: relative;
+}
+
+.reglement-section ul li::before {
+    content: "•";
+    color: var(--primary-color);
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+}
+
+@media (max-width: 768px) {
+    .reglement-hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .reglement-section h2 {
+        font-size: 1.5rem;
+    }
+
+    .reglement-section {
+        padding: 20px;
+    }
+}

@@ -1,42 +1,53 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Krni_serv - Accueil</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/index.css"
 </head>
-
 <body>
-
-    <header>
-        <div class="logo">Krni_serv</div>
-        <div class="menu-icon" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
-        <nav id="navbar">
-            <a href="index.html">Accueil</a>
-            <a href="about.html">À Propos</a>
-            <a href="join.html">Rejoindre</a>
-            <a href="contact.html">Contact</a>
-        </nav>
-    </header>
-
-    <div class="counter">
-        Compteur : <span id="memberCount">...</span> | Mis à jour dans : <span id="updateTime">00:30</span>
+    <div class="counter-box">
+        <i class="fas fa-users"></i> 
+        Membres : <span id="memberCount">chargement...</span> | 
+        <i class="fas fa-clock"></i> 
+        Mise à jour : <span id="updateTime">00:30</span>
     </div>
+
+    <nav class="navbar">
+        <button class="hamburger" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="menu" id="menu">
+            <button class="menu-close" onclick="toggleMenu()">
+                <i class="fas fa-times"></i>
+            </button>
+            <ul>
+                <li><a href="index.html"><i class="fas fa-home"></i> Accueil</a></li>
+                <li><a href="about.html"><i class="fas fa-info-circle"></i> À propos</a></li>
+                <li><a href="reglement.html"><i class="fas fa-book"></i> Règles</a></li>
+                <li><a href="events.html"><i class="fas fa-calendar"></i> Événements</a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+            </ul>
+        </div>
+    </nav>
 
     <main>
         <section class="hero">
-            <h1>Bienvenue sur Krni_serv</h1>
-            <p>Rejoignez notre communauté pour discuter, jouer et partager vos passions.</p>
-            <a href="join.html" class="button">Rejoindre le serveur</a>
+            <h1>Bienvenue sur le site du Krni_serv</h1>
+            <p>Rejoignez notre communauté dynamique pour discuter, jouer et partager vos passions dans une ambiance conviviale.</p>
+            <a href="https://discord.gg/abntRHEdfz" class="join-button">
+                <i class="fab fa-discord"></i> Rejoindre le serveur
+            </a>
         </section>
 
         <section class="info">
-            <h2>À Propos de Krni_serv</h2>
-            <p>Notre serveur est dédié à rassembler des passionnés autour de divers sujets. Que vous soyez gamer,
-                artiste ou simplement curieux, vous trouverez votre place ici.</p>
+            <h2>À Propos du Krni_serv</h2>
+            <p>Notre serveur Discord est un espace convivial dédié aux passionnés de tous horizons. 
+               Que vous soyez gamer, artiste, développeur ou simplement à la recherche d'une communauté accueillante, 
+               vous trouverez votre place parmi nous. Rejoignez-nous pour participer à des giveaways, 
+               des sondages et des discussions enrichissantes.</p>
         </section>
     </main>
 
@@ -44,9 +55,6 @@
         &copy; 2025 Krni_serv. Tous droits réservés.
     </footer>
 
-    <script src="js/server-data.js"></script>
-    </script>
-
+    <script src="js/script.js"></script>
 </body>
-
 </html>
