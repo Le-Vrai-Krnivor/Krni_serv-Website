@@ -22,6 +22,11 @@ app.get('/api/server-data', async (req, res) => {
     }
 });
 
+// Gestion de la page 404
+app.use((req, res, next) => {
+    res.status(404).sendFile(path.join(__dirname, 'public', '404.html'));
+});
+
 // Démarrer le serveur
 app.listen(PORT, () => {
     console.log(`Serveur en cours d'exécution sur http://localhost:${PORT}`);
