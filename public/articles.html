@@ -1,0 +1,21 @@
+<div class="articles-container">
+    <div id="articles-list"></div>
+</div>
+
+<script>
+    function loadArticles() {
+        const articlesContainer = document.getElementById('articles-list');
+        const articles = JSON.parse(localStorage.getItem('articles') || '[]');
+        
+        articlesContainer.innerHTML = articles.map(article => `
+            <article class="article">
+                <h2>${article.title}</h2>
+                <div class="article-date">${article.date}</div>
+                <div class="article-content">${article.content}</div>
+            </article>
+        `).join('');
+    }
+
+    // Charger les articles au chargement de la page
+    loadArticles();
+</script> 

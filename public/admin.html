@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administration</title>
+    <link rel="stylesheet" href="styles/index.css">
+    <link rel="stylesheet" href="styles/admin.css">
+</head>
+<body>
+    <div class="admin-container">
+        <h1>Écrire un nouvel article</h1>
+        <div class="editor-container">
+            <input type="text" id="article-title" placeholder="Titre de l'article">
+            <textarea id="article-content" placeholder="Contenu de l'article"></textarea>
+            <button class="publish-btn" onclick="publishArticle()">Publier</button>
+        </div>
+    </div>
+
+    <script>
+        function publishArticle() {
+            const title = document.getElementById('article-title').value;
+            const content = document.getElementById('article-content').value;
+            
+            if (!title || !content) {
+                alert('Veuillez remplir tous les champs');
+                return;
+            }
+
+            const article = {
+                title: title,
+                content: content,
+                date: new Date().toLocaleDateString('fr-FR'),
+            };
+
+            // Récupérer les articles existants
+            let articles = JSON.parse(localStorage.getItem('articles') || '[]');
+            
+            // Ajouter le nouvel article
+            articles.unshift(article);
+            
+            // Sauvegarder dans le localStorage
+            localStorage.setItem('articles', JSON.stringify(articles));
+            
+            // Réinitialiser les champs
+            document.getElementById('article-title').value = '';
+            document.getElementById('article-content').value = '';
+            
+            alert('Article publié avec succès !');
+        }
+    </script>
+</body>
+</html> 

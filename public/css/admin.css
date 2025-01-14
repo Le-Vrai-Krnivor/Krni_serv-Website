@@ -1,0 +1,45 @@
+.admin-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.editor-container {
+    width: 100%;
+    min-height: 400px;
+    margin: 20px 0;
+}
+
+#article-title {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+}
+
+#article-content {
+    width: 100%;
+    min-height: 300px;
+    padding: 10px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    resize: vertical;
+}
+
+.publish-btn {
+    padding: 10px 20px;
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+.publish-btn:hover {
+    opacity: 0.8;
+} 
