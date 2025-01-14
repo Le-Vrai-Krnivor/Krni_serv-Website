@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualités</title>
+    <style>
+        .article {
+            border: 1px solid #ddd;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .admin-panel {
+            display: none;
+            background: #f5f5f5;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        #editor {
+            width: 100%;
+            min-height: 200px;
+            margin-bottom: 10px;
+        }
+        .toolbar button {
+            margin: 5px;
+            padding: 5px 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="loginForm">
+        <h2>Connexion Admin</h2>
+        <input type="text" id="username" placeholder="Nom d'utilisateur">
+        <input type="password" id="password" placeholder="Mot de passe">
+        <button onclick="login()">Se connecter</button>
+    </div>
+
+    <div id="adminPanel" class="admin-panel">
+        <h2>Publier un article</h2>
+        <div class="toolbar">
+            <button onclick="formatText('bold')">Gras</button>
+            <button onclick="formatText('italic')">Italique</button>
+            <button onclick="formatText('underline')">Souligné</button>
+        </div>
+        <div id="editor" contenteditable="true"></div>
+        <button onclick="publishArticle()">Publier</button>
+    </div>
+
+    <div id="articles"></div>
+
+    <script>
+        async function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                const response = await fetch('/api/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ username, password })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    document.getElementById('loginForm').style.display = 'none';
+                    document.getElementById('adminPanel').style.display = 'block';
+                    alert('Connexion réussie !');
+                } else {
+                    alert('Identifiants incorrects !');
+                }
+            } catch (error) {
+                alert('Erreur de connexion');
+            }
+        }
+
+        function formatText(command) {
+            document.execCommand(command, false, null);
+        }
+
+        function publishArticle() {
+            const content = document.getElementById('editor').innerHTML;
+            const date = new Date().toLocaleString();
+            const username = document.getElementById('username').value;
+
+            const articleDiv = document.createElement('div');
+            articleDiv.className = 'article';
+            articleDiv.innerHTML = `
+                <p><strong>Publié par ${username} le ${date}</strong></p>
+                <div>${content}</div>
+            `;
+
+            document.getElementById('articles').prepend(articleDiv);
+            document.getElementById('editor').innerHTML = '';
+        }
+    </script>
+</body>
+</html>
